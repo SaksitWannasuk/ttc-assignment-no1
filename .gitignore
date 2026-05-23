@@ -1,11 +1,47 @@
 # Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.nx/cache/
+frontend/coverage/
+frontend/.sass-cache/
+frontend/connect.lock
+frontend/libpeerconnection.log
+frontend/npm-debug.log*
+frontend/yarn-error.log
+frontend/yarn-debug.log*
+frontend/.pnpm-debug.log*
+frontend/*.js.map
+frontend/src/environments/*.local.ts
+
+backend/bin/
+backend/obj/
+backend/*.user
+backend/.vs/
+backend/**/*.user
+backend/**/bin/
+backend/**/obj/
+backend/**/*.suo
+backend/TestResults/
+backend/coverage/
+backend/**/*.db
+backend/**/*.db-shm
+backend/**/*.db-wal
+
+# Secrets & config overrides
+backend/**/appsettings.Local.json
+backend/**/appsettings.Development.local.json
+backend/**/*.pfx
+backend/**/*.p12
+backend/**/*.key
+backend/**/secrets.json
+
+# NuGet
+backend/**/*.nupkg
+backend/**/*.snupkg
+backend/**/project.lock.json
+backend/**/packages/
+backend/**/.nuget/
 
 # Node modules and dependency files
 /node_modules/
