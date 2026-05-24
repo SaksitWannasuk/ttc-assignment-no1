@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'https://localhost:7232/api';
+  private apiUrl = 'http://localhost:7232/api';
 
   constructor(private http: HttpClient) {}
 

@@ -42,10 +42,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowOrigin");
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors("AllowOrigin");
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.EnsureCreated();
+}
 
 app.Run();
