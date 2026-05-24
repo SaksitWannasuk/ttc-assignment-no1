@@ -1,0 +1,95 @@
+<h2 mat-dialog-title>
+    {{ isViewMode ? 'View Person' : 'Add Person' }}
+</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="form" class="space-y-4">
+
+        <div class="grid grid-cols-1 mt-4 md:grid-cols-2 gap-4">
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>ชื่อ</mat-label>
+                <input matInput formControlName="firstName" />
+
+                @if (form.get('firstName')?.hasError('required')) {
+                <mat-error>กรุณากรอกชื่อ</mat-error>
+                }
+
+                @if (form.get('firstName')?.hasError('maxlength')) {
+                <mat-error>กรุณากรอกชื่อไม่เกิน 200 ตัวอักษร</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>นามสกุล</mat-label>
+                <input matInput formControlName="lastName" />
+                @if (form.get('lastName')?.hasError('required')) {
+                <mat-error>กรุณากรอกนามสกุล</mat-error>
+                }
+
+                @if (form.get('lastName')?.hasError('maxlength')) {
+                <mat-error>กรุณากรอกนามสกุลไม่เกิน 200 ตัวอักษร</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>วันเกิด</mat-label>
+
+            <input matInput [matDatepicker]="picker" formControlName="birthDate" [max]="maxDate" readonly>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+            </mat-datepicker-toggle>
+
+            <mat-datepicker #picker></mat-datepicker>
+
+            @if (form.get('birthDate')?.hasError('required')) {
+            <mat-error>
+                กรุณากรอกวันเกิด
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <div class="text-md text-gray-600">
+            อายุ:
+            <span class="font-semibold">
+                {{ age ?? '-' }}
+            </span>
+        </div>
+
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>ที่อยู่</mat-label>
+            <textarea matInput rows="3" formControlName="address"></textarea>
+            @if (form.get('address')?.hasError('required')) {
+            <mat-error>กรุณากรอกที่อยู่</mat-error>
+            }
+
+            @if (form.get('address')?.hasError('maxlength')) {
+            <mat-error>กรุณากรอกที่อยู่ไม่เกิน 4000 ตัวอักษร</mat-error>
+            }
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <div class="flex justify-end gap-2 w-full pt-2">
+
+        @if (!isViewMode) {
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" [disabled]="isSaving"
+            (click)="save()">
+            {{ isSaving ? 'กำลังบันทึก' : 'บันทึก' }}
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" [disabled]="isSaving"
+            (click)="close()">
+            ยกเลิก
+        </button>
+        }
+
+        @if (isViewMode) {
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="close()">
+            ปิด
+        </button>
+        }
+    </div>
+</mat-dialog-actions>

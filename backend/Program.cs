@@ -16,15 +16,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IPersonService, PersonService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        policy =>
+        {
+            policy
+                .WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwaggerUI(options =>
     {
-        // Direct Swagger UI to use the built-in JSON file
         options.SwaggerEndpoint("/openapi/v1.json", "v1");
     });
 }
@@ -34,5 +45,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowOrigin");
 
 app.Run();

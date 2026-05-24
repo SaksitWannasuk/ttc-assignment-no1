@@ -1,0 +1,12 @@
+@if(!loading){
+<div class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden m-12 p-12">
+    <h1 class="text-2xl font-semibold text-gray-900">Person List</h1>
+    <div class="flex items-center justify-end gap-4 border-b border-gray-200 py-3">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="onAddPerson()">
+            Add
+        </button>
+    </div>
+    <app-person-list-grid [persons]="persons" (view)="openViewPerson($event)">
+    </app-person-list-grid>
+</div>
+}

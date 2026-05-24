@@ -1,4 +1,6 @@
-﻿namespace backend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Models
 {
     public class Person
     {
@@ -9,10 +11,22 @@
         public String Address { get; set; }
         public DateTime BirthDate { get; set; }
         public Boolean IsActive { get; set; }
+        public DateTime CreatedTime { get; set; }
+        public Nullable<DateTime> UpdatedTime { get; set; }
     }
 
-    public class GetAllPersonResponse : Person
+    public class CreatePersonRequest
     {
-        public int Age { get; set; }
+        [Required]
+        [MaxLength(200)]
+        public String FirstName { get; set; }
+        [Required]
+        [MaxLength(200)]
+        public String LastName { get; set; }
+        [Required]
+        [MaxLength(4000)]
+        public String Address { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
     }
 }

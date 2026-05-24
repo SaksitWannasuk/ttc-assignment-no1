@@ -6,5 +6,7 @@ namespace backend.Interface
     public interface IPersonService
     {
         Task<List<Person>> GetAllPerson();
+
+        Task<Person> CreatePerson(CreatePersonRequest param);
     }
 }
