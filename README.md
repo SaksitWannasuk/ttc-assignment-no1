@@ -1,29 +1,66 @@
+# Technical Assignment
+
 ## Stack
 
-Frontend Angular 21, Angular Material, Tailwind CSS
-Backend .NET 10 
-Database SQL Server
-
----
-
-## Requirement
-
-ก่อนรันโปรเจค Install :
-
-- Node.js
-- .NET 10 SDK
+- Angular 21
+- Angular Material
+- Tailwind CSS
+- ASP.NET Core (.NET 10)
 - SQL Server
-- Angular CLI
+- Docker Compose
 
 ---
 
-## Install and Run
+## Run with Docker
 
-### 1. ตั้งค่า Backend
+Requirement:
+- Docker Desktop
 
-#### 1.1 แก้ไข Connection String
+Run:
 
-เปิดไฟล์ `backend/appsettings.json` แล้วแก้ไข Connection String ให้ตรงกับ SQL Server:
+```bash
+docker compose up --build
+```
+
+Services:
+
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:4200 |
+| Swagger | http://localhost:7232/swagger |
+| SQL Server | localhost:1433 |
+
+Stop container:
+
+```bash
+docker compose down
+```
+
+Remove volume:
+
+```bash
+docker compose down -v
+```
+
+SQL Server:
+
+| | |
+|---|---|
+| Username | sa |
+| Password | SqlServer@123 |
+| Database | ttc-assignment-no1 |
+
+---
+
+## Run Backend Manual
+
+Configure connection string in:
+
+```text
+backend/appsettings.json
+```
+
+Example:
 
 ```json
 {
@@ -33,83 +70,90 @@ Database SQL Server
 }
 ```
 
-#### 1.2 สร้างฐานข้อมูล (Migration)
+Run migration:
 
 ```bash
 cd backend
 dotnet ef database update
 ```
 
-#### 1.3 รัน Backend
+Run API:
 
 ```bash
 dotnet run
 ```
 
-สามารถเปิด Swagger UI เพื่อทดสอบ API ได้ที่:
-```
-https://localhost:<port>/swagger
+Swagger:
+
+```text
+http://localhost:7232/swagger
 ```
 
 ---
 
-### 2. ตั้งค่า Frontend
+## Run Frontend Manual
 
-#### 2.1 ติดตั้ง Dependencies
+Install package:
 
 ```bash
 cd frontend
 npm install
 ```
 
-#### 2.2 รัน Frontend
+Start project:
 
 ```bash
 npm start
 ```
 
-Frontend จะรันที่ `http://localhost:4200`
+Frontend URL:
 
----
-
-## API Endpoints
-
-| `GET` | `/api/Person/GetAllPerson` | ดึงข้อมูลบุคคลทั้งหมด |
-
-| `POST` | `/api/Person/CreatePerson` | สร้างข้อมูลบุคคล |
-
-### ตัวอย่าง Request Body สำหรับ CreatePerson
-
-```json
-{
-  "firstName": "สมชาย",
-  "lastName": "ใจดี",
-  "address": "123 ถนนสุขุมวิท กรุงเทพฯ",
-  "birthDate": "1990-01-15T00:00:00"
-}
+```text
+http://localhost:4200
 ```
 
 ---
 
-## ฟีเจอร์หลัก
+## API
 
-- **แสดงรายการบุคคล** — ตารางแสดงข้อมูลบุคคลทั้งหมดในระบบ
-- **เพิ่มบุคคลใหม่** — กรอกฟอร์ม ชื่อ / นามสกุล / ที่อยู่ / วันเกิด
-- **ดูรายละเอียด** — เปิด dialog แสดงข้อมูลพร้อมคำนวณอายุอัตโนมัติ
+| Method | Endpoint |
+|---|---|
+| GET | `/api/Person/GetAllPerson` |
+| POST | `/api/Person/CreatePerson` |
 
 ---
 
-## โครงสร้างฐานข้อมูล
+## Features
 
-ตาราง `Persons`
+- Person list table
+- Create person dialog
+- Form validation
+- Age calculation from birth date
 
-| คอลัมน์ | ประเภท | คำอธิบาย |
-|---------|--------|----------|
-| ID | int | รหัสหลัก (Auto Increment) |
-| FirstName | nvarchar(200) | ชื่อ |
-| LastName | nvarchar(200) | นามสกุล |
-| Address | nvarchar(4000) | ที่อยู่ |
-| BirthDate | datetime | วันเกิด |
-| IsActive | bit | สถานะ Active |
-| CreatedTime | datetime | วันที่สร้าง |
-| UpdatedTime | datetime | วันที่แก้ไขล่าสุด |
+---
+
+## Database
+
+Table: `Persons`
+
+| Column | Type |
+|---|---|
+| ID | int |
+| FirstName | nvarchar(200) |
+| LastName | nvarchar(200) |
+| Address | nvarchar(4000) |
+| BirthDate | datetime |
+| IsActive | bit |
+| CreatedTime | datetime |
+| UpdatedTime | datetime |
+
+---
+
+## Structure
+
+```text
+backend/
+frontend/
+docker-compose.yml
+README.md
+```
