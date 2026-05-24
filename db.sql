@@ -9,7 +9,7 @@ CREATE TABLE dbo.Persons (
     BirthDate DATETIME2,
     IsActive BIT NOT NULL DEFAULT 1,
     CreatedTime DATETIME2,
-    UpdatedTime DATETIME2,
+    UpdatedTime DATETIME2
 );
 
 INSERT INTO dbo.Persons (FirstName, LastName, Address, BirthDate, CreatedTime) VALUES
