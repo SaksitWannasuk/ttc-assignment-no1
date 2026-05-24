@@ -86,7 +86,7 @@ export class PersonDialogComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.maxLength(200)]],
       lastName: ['', [Validators.required, Validators.maxLength(200)]],
       birthDate: ['', [Validators.required]],
-      address: ['', [Validators.required, Validators.maxLength(4000)]]
+      address: ['', [Validators.required, Validators.maxLength(2000)]]
     });
 
     if (this.data.person) {
