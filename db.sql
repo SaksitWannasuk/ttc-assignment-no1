@@ -13,7 +13,7 @@ CREATE TABLE dbo.Persons (
 );
 
 INSERT INTO dbo.Persons (FirstName, LastName, Address, BirthDate, CreatedTime) VALUES
-('ศักดิ์สิทธิ์', 'วรรณสุข', 'กรุงเทพมหานคร ประเทศไทย', '2001-05-16', GETDATE()),
+(N'ศักดิ์สิทธิ์', N'วรรณสุข', N'กรุงเทพมหานคร ประเทศไทย', '2001-05-16', GETDATE()),
 (N'ณัฐพงศ์', N'รัตนกุล', N'123 ถนนสุขุมวิท กรุงเทพมหานคร ประเทศไทย', '1995-03-12', GETDATE()),
 (N'ชญานิษฐ์', N'ประเสริฐสุข', N'45 ถนนรัชดาภิเษก กรุงเทพมหานคร ประเทศไทย', '2002-11-25', GETDATE()),
 (N'ธีรภัทร', N'ศรีสาย', N'เชียงใหม่ ประเทศไทย', '1988-07-04', GETDATE()),
@@ -33,12 +33,9 @@ INSERT INTO dbo.Persons (FirstName, LastName, Address, BirthDate, CreatedTime) V
 (N'ศิริรัตน์', N'กุลวงศ์', N'สงขลา ประเทศไทย', '1992-08-08', GETDATE()),
 (N'ภาณุพงศ์', N'จิตดี', N'ระยอง ประเทศไทย', '1998-04-21', GETDATE()),
 (N'สุชาดา', N'ธนสุข', N'ลาดพร้าว กรุงเทพมหานคร ประเทศไทย', '2005-02-13', GETDATE()),
-(N'ตะวัน', N'แซ่ลิ้ม', N'สุราษฎร์ธานี ประเทศไทย', '1987-12-31', GETDATE()),
+(N'ตะวัน', N'แซ่ลิ้ม', N'สุราษฎร์ธานี ประเทศไทย', '1987-12-31', GETDATE());
 
 Select * from dbo.Persons;
-
-drop table dbo.Persons;
-
 
 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
 FROM INFORMATION_SCHEMA.COLUMNS
