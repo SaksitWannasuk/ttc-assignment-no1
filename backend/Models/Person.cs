@@ -14,19 +14,4 @@ namespace backend.Models
         public DateTime CreatedTime { get; set; }
         public Nullable<DateTime> UpdatedTime { get; set; }
     }
-
-    public class CreatePersonRequest
-    {
-        [Required]
-        [MaxLength(200)]
-        public String FirstName { get; set; }
-        [Required]
-        [MaxLength(200)]
-        public String LastName { get; set; }
-        [Required]
-        [MaxLength(2000)]
-        public String Address { get; set; }
-        [Required]
-        public DateTime BirthDate { get; set; }
-    }
 }

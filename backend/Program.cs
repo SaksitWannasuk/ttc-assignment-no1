@@ -1,5 +1,5 @@
 using backend.DBContext;
-using backend.Interface;
+using backend.Interfaces;
 using backend.Services;
 using Microsoft.EntityFrameworkCore;
 

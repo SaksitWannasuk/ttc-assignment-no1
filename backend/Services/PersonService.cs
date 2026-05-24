@@ -1,5 +1,6 @@
 ﻿using backend.DBContext;
-using backend.Interface;
+using backend.DTOs;
+using backend.Interfaces;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,5 @@
-﻿using backend.Interface;
+﻿using backend.DTOs;
+using backend.Interfaces;
 using backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +25,16 @@ namespace backend.Controllers
         }
 
         [HttpPost("CreatePerson")]
-        public async Task<IActionResult> CreatePerson(CreatePersonRequest param)
+        public async Task<IActionResult> Create([FromBody] CreatePersonRequest request)
         {
-            var persons = await _personService.CreatePerson(param);
-            return Ok(persons);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _personService.CreatePerson(request);
+
+            return Ok();
         }
     }
 }

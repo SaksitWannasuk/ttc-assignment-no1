@@ -40,7 +40,7 @@ cd backend
 dotnet ef database update
 ```
 
-#### 2.3 รัน Backend
+#### 1.3 รัน Backend
 
 ```bash
 dotnet run
@@ -75,6 +75,7 @@ Frontend จะรันที่ `http://localhost:4200`
 ## API Endpoints
 
 | `GET` | `/api/Person/GetAllPerson` | ดึงข้อมูลบุคคลทั้งหมด |
+
 | `POST` | `/api/Person/CreatePerson` | สร้างข้อมูลบุคคล |
 
 ### ตัวอย่าง Request Body สำหรับ CreatePerson

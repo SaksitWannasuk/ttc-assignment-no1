@@ -1,7 +1,8 @@
-﻿using backend.Models;
+﻿using backend.DTOs;
+using backend.Models;
 using backend.Services;
 
-namespace backend.Interface
+namespace backend.Interfaces
 {
     public interface IPersonService
     {
